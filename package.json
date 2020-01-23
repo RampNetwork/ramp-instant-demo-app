@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ramp-network/ramp-instant-sdk": "^1.6.0",
+    "@ramp-network/ramp-instant-sdk": "2.0.0-rc.1",
     "@types/jest": "24.0.15",
     "@types/node": "12.0.8",
     "@types/react": "16.8.20",

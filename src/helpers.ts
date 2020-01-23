@@ -5,6 +5,7 @@ interface ICodeGenProps {
   swapAsset: string;
   userAddress: string;
   useRefundedFees: boolean;
+  useNewWindow: boolean;
 }
 
 export function generateIntegrationCode(codeParams: ICodeGenProps): string {
@@ -32,9 +33,10 @@ new RampInstantSDK({
   userAddress: '${codeParams.userAddress}',
   url: '${process.env.REACT_APP_URL}', // only specify the url if you want to use testnet widget versions,
   // use variant: 'auto' for automatic mobile / desktop handling,
+  // use variant: 'hosted-auto' for automatic mobile / desktop handling in new window,
   // 'mobile' to force mobile version
   // 'desktop' to force desktop version (default)
-  variant: 'auto', ${getHostTokenOrCopy(codeParams.useRefundedFees)}
+  variant: '${codeParams.useNewWindow ? 'hosted-auto' : 'auto'}', ${getHostTokenOrCopy(codeParams.useRefundedFees)}
 })
   .on('*', console.log)
   .show();
