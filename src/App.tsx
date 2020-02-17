@@ -51,7 +51,7 @@ const App: React.FC = () => {
       swapAsset: asset,
       url: process.env.REACT_APP_URL,
       userAddress: address,
-      variant: useNewWindow ? 'auto' : 'auto',
+      variant: 'auto'
       // variant: useNewWindow ? 'hosted-auto' : 'auto',
       userEmailAddress: emailAddress,
       hostApiKey: token || undefined,
