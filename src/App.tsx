@@ -11,6 +11,7 @@ const currentNetwork = process.env.REACT_APP_NETWORK_NAME;
 
 const App: React.FC = () => {
   const [address, setAddress] = useState('0xe2E0256d6785d49eC7BadCD1D44aDBD3F6B0Ab58');
+  const [emailAddress, setEmailAddress] = useState('');
 
   const [amount, setAmount] = useState('0.01');
 
@@ -50,7 +51,9 @@ const App: React.FC = () => {
       swapAsset: asset,
       url: process.env.REACT_APP_URL,
       userAddress: address,
-      variant: useNewWindow ? 'hosted-auto' : 'auto',
+      variant: useNewWindow ? 'auto' : 'auto',
+      // variant: useNewWindow ? 'hosted-auto' : 'auto',
+      userEmailAddress: emailAddress,
       hostApiKey: token || undefined,
     })
       .on('*', console.log)
@@ -63,10 +66,11 @@ const App: React.FC = () => {
         swapAmount: convertIntStringToWeiString(amount || '0'),
         swapAsset: asset,
         userAddress: address,
+        userEmailAddress: emailAddress,
         useRefundedFees,
         useNewWindow,
       }),
-    [amount, asset, address, useRefundedFees, useNewWindow],
+    [amount, asset, address, useRefundedFees, useNewWindow, emailAddress],
   );
 
   return (
@@ -119,6 +123,15 @@ const App: React.FC = () => {
                 className={styles.input}
                 value={address}
                 onChange={(e) => setAddress((e.target as HTMLInputElement).value)}
+              />
+            </label>
+
+            <label className={styles.label}>
+              Buyer's email address:
+              <input
+                className={styles.input}
+                value={emailAddress}
+                onChange={(e) => setEmailAddress((e.target as HTMLInputElement).value)}
               />
             </label>
 
@@ -190,6 +203,8 @@ const App: React.FC = () => {
                   </div>
                 </div>
 
+                {/* 
+                  ToDo uncomment after release sdk@2.0.0
                 <div className={styles.label}>
                   IFrame/Window:
                   <div className={styles.assetRadioContainer}>
@@ -208,7 +223,7 @@ const App: React.FC = () => {
                       New Window
                     </label>
                   </div>
-                </div>
+                </div> */}
               </>
             ) : null}
 

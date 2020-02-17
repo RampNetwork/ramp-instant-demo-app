@@ -4,6 +4,7 @@ interface ICodeGenProps {
   swapAmount: string;
   swapAsset: string;
   userAddress: string;
+  userEmailAddress: string;
   useRefundedFees: boolean;
   useNewWindow: boolean;
 }
@@ -30,7 +31,12 @@ new RampInstantSDK({
   hostLogoUrl: 'https://cdn-images-1.medium.com/max/2600/1*nqtMwugX7TtpcS-5c3lRjw.png',
   swapAmount: '${codeParams.swapAmount}',
   swapAsset: '${codeParams.swapAsset}',
-  userAddress: '${codeParams.userAddress}',
+  userAddress: '${codeParams.userAddress}',${
+    codeParams.userEmailAddress
+      ? `
+  userEmailAddress: '${codeParams.userEmailAddress}'`
+      : ''
+  }
   url: '${process.env.REACT_APP_URL}', // only specify the url if you want to use testnet widget versions,
   // use variant: 'auto' for automatic mobile / desktop handling,
   // 'hosted-auto' for automatic mobile / desktop handling in new window,
