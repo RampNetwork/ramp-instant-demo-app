@@ -127,7 +127,7 @@ const App: React.FC = () => {
             </label>
 
             <label className={styles.label}>
-              Buyer's email address:
+              Buyer's email address (optional):
               <input
                 className={styles.input}
                 value={emailAddress}
