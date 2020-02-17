@@ -19,7 +19,7 @@ const App: React.FC = () => {
 
   const [useRefundedFees, setUseRefundedFees] = useState(false);
 
-  const [useNewWindow, setUseNewWindow] = useState(false);
+  const [useNewWindow] = useState(false);
 
   const token = getHostTokenForRefundedFees(useRefundedFees);
 
@@ -51,7 +51,7 @@ const App: React.FC = () => {
       swapAsset: asset,
       url: process.env.REACT_APP_URL,
       userAddress: address,
-      variant: 'auto'
+      variant: 'auto',
       // variant: useNewWindow ? 'hosted-auto' : 'auto',
       userEmailAddress: emailAddress,
       hostApiKey: token || undefined,
