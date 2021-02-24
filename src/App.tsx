@@ -3,14 +3,21 @@ import React, { useMemo, useState } from 'react';
 import './App.css';
 import { BetaBanner, Code } from './components';
 import styles from './components.module.scss';
-import { convertIntStringToWeiString, generateIntegrationCode, getHostTokenForRefundedFees } from './helpers';
+import {
+  convertIntStringToWeiString,
+  generateIntegrationCode,
+  getHostTokenForRefundedFees,
+} from './helpers';
 import { ReactComponent as RampLogo } from './ramp-instant-logo.svg';
+import { getTokenBaseOnTestNet } from './dynamicToken/dynamicToken';
 
-const tokenName = process.env.REACT_APP_TOKEN_NAME;
+const tokenName = getTokenBaseOnTestNet();
 const currentNetwork = process.env.REACT_APP_NETWORK_NAME;
 
 const App: React.FC = () => {
-  const [address, setAddress] = useState('0xe2E0256d6785d49eC7BadCD1D44aDBD3F6B0Ab58');
+  const [address, setAddress] = useState(
+    '0xe2E0256d6785d49eC7BadCD1D44aDBD3F6B0Ab58'
+  );
   const [emailAddress, setEmailAddress] = useState('');
 
   const [amount, setAmount] = useState('0.01');
@@ -28,7 +35,8 @@ const App: React.FC = () => {
   const handleSubmitQuickButtonClick = () => {
     new RampInstantSDK({
       hostAppName: 'Maker DAO',
-      hostLogoUrl: 'https://cdn-images-1.medium.com/max/2600/1*nqtMwugX7TtpcS-5c3lRjw.png',
+      hostLogoUrl:
+        'https://cdn-images-1.medium.com/max/2600/1*nqtMwugX7TtpcS-5c3lRjw.png',
       url: process.env.REACT_APP_URL!,
       variant: 'auto',
     })
@@ -48,7 +56,8 @@ const App: React.FC = () => {
 
     new RampInstantSDK({
       hostAppName: 'Maker DAO',
-      hostLogoUrl: 'https://cdn-images-1.medium.com/max/2600/1*nqtMwugX7TtpcS-5c3lRjw.png',
+      hostLogoUrl:
+        'https://cdn-images-1.medium.com/max/2600/1*nqtMwugX7TtpcS-5c3lRjw.png',
       swapAmount: weiAmount,
       swapAsset: asset,
       url: process.env.REACT_APP_URL,
@@ -72,7 +81,7 @@ const App: React.FC = () => {
         useRefundedFees,
         useNewWindow,
       }),
-    [amount, asset, address, useRefundedFees, useNewWindow, emailAddress],
+    [amount, asset, address, useRefundedFees, useNewWindow, emailAddress]
   );
 
   return (
@@ -92,21 +101,25 @@ const App: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <RampLogo style={{ height: '30px', marginBottom: '20px', width: 'auto' }} />
+            <RampLogo
+              style={{ height: '30px', marginBottom: '20px', width: 'auto' }}
+            />
           </a>
 
           <h1 className={styles.heading}>Try Ramp Instant</h1>
 
           <p className={styles.description}>
-            Developers - look right. That’s the code to your own onramp. Paste it into your codebase and let your users
-            buy crypto with Ramp!
+            Developers - look right. That’s the code to your own onramp. Paste
+            it into your codebase and let your users buy crypto with Ramp!
           </p>
           <p className={styles.description}>
             Testers - this is the demo version of the widget. You can buy{' '}
-            {currentNetwork === 'mainnet' ? '' : currentNetwork + ' '} Ether with GBP to experience the flow and feel
-            the breeze of Open Banking.
+            {currentNetwork === 'mainnet' ? '' : currentNetwork + ' '} Ether
+            with GBP to experience the flow and feel the breeze of Open Banking.
           </p>
-          <p className={styles.description}>This works best on desktop, but feel free to give it a go on mobile.</p>
+          <p className={styles.description}>
+            This works best on desktop, but feel free to give it a go on mobile.
+          </p>
 
           <a
             href={process.env.REACT_APP_DOCS_URL}
@@ -122,7 +135,10 @@ const App: React.FC = () => {
           <section>
             <h2>Quick Integration</h2>
             <div className={styles.buttonContainer}>
-              <button className={styles.button} onClick={handleSubmitQuickButtonClick}>
+              <button
+                className={styles.button}
+                onClick={handleSubmitQuickButtonClick}
+              >
                 Buy with Ramp Instant
               </button>
             </div>
@@ -131,11 +147,13 @@ const App: React.FC = () => {
           <section>
             <h2>Advanced Integration</h2>
             <label className={styles.label}>
-              Buyer's ETH address:
+              Buyer's crypto address
               <input
                 className={styles.input}
                 value={address}
-                onChange={(e) => setAddress((e.target as HTMLInputElement).value)}
+                onChange={(e) =>
+                  setAddress((e.target as HTMLInputElement).value)
+                }
               />
             </label>
 
@@ -144,16 +162,20 @@ const App: React.FC = () => {
               <input
                 className={styles.input}
                 value={emailAddress}
-                onChange={(e) => setEmailAddress((e.target as HTMLInputElement).value)}
+                onChange={(e) =>
+                  setEmailAddress((e.target as HTMLInputElement).value)
+                }
               />
             </label>
 
             <label className={styles.label}>
-              Token / ETH amount:
+              Purchased asset amount:
               <input
                 className={styles.input}
                 value={amount}
-                onChange={(e) => setAmount((e.target as HTMLInputElement).value)}
+                onChange={(e) =>
+                  setAmount((e.target as HTMLInputElement).value)
+                }
               />
             </label>
 
@@ -162,7 +184,9 @@ const App: React.FC = () => {
               <input
                 className={styles.input}
                 value={finalUrl}
-                onChange={(e) => setFinalUrl((e.target as HTMLInputElement).value)}
+                onChange={(e) =>
+                  setFinalUrl((e.target as HTMLInputElement).value)
+                }
               />
             </label>
 
@@ -176,7 +200,11 @@ const App: React.FC = () => {
             <div className={styles.label}>
               Asset:
               <div className={styles.assetRadioContainer}>
-                <label className={styles.label} style={{ display: 'block' }} htmlFor="ethRadio">
+                <label
+                  className={styles.label}
+                  style={{ display: 'block' }}
+                  htmlFor="ethRadio"
+                >
                   <input
                     type="radio"
                     className={styles.radio}
@@ -188,13 +216,33 @@ const App: React.FC = () => {
                   />
                   {currentNetwork === 'mainnet' ? '' : currentNetwork + ' '}ETH
                 </label>
-                <label className={styles.label} style={{ display: 'block' }} htmlFor="tokenRadio">
+                <label
+                  className={styles.label}
+                  style={{ display: 'block' }}
+                  htmlFor="ethRadio"
+                >
+                  <input
+                    type="radio"
+                    className={styles.radio}
+                    name="asset"
+                    value="BTC"
+                    onChange={() => setAsset('BTC')}
+                    checked={asset === 'BTC'}
+                    id="btcRadio"
+                  />
+                  BTC
+                </label>
+                <label
+                  className={styles.label}
+                  style={{ display: 'block' }}
+                  htmlFor="tokenRadio"
+                >
                   <input
                     type="radio"
                     className={styles.radio}
                     name="asset"
                     value={tokenName}
-                    onChange={() => setAsset(tokenName!)}
+                    onChange={() => setAsset(tokenName)}
                     checked={asset === tokenName}
                     id="tokenRadio"
                   />
@@ -208,7 +256,11 @@ const App: React.FC = () => {
                 <div className={styles.label}>
                   Custom features:
                   <div className={styles.assetRadioContainer}>
-                    <label className={styles.label} style={{ display: 'block' }} htmlFor="refundedFeesCheckbox">
+                    <label
+                      className={styles.label}
+                      style={{ display: 'block' }}
+                      htmlFor="refundedFeesCheckbox"
+                    >
                       <input
                         type="checkbox"
                         className={styles.radio}
@@ -228,7 +280,11 @@ const App: React.FC = () => {
                 <div className={styles.label}>
                   IFrame/Window:
                   <div className={styles.assetRadioContainer}>
-                    <label className={styles.label} style={{ display: 'block' }} htmlFor="newWindowCheckbox">
+                    <label
+                      className={styles.label}
+                      style={{ display: 'block' }}
+                      htmlFor="newWindowCheckbox"
+                    >
                       <input
                         type="checkbox"
                         className={styles.radio}
@@ -248,7 +304,10 @@ const App: React.FC = () => {
             ) : null}
 
             <div className={styles.buttonContainer}>
-              <button className={styles.button} onClick={handleSubmitButtonClick}>
+              <button
+                className={styles.button}
+                onClick={handleSubmitButtonClick}
+              >
                 Buy with Ramp Instant
               </button>
             </div>
@@ -264,7 +323,11 @@ const App: React.FC = () => {
             }}
           >
             <span style={{ display: 'block' }}>
-              Check out the npm package <a href="https://www.npmjs.com/package/@ramp-network/ramp-instant-sdk">here</a>.
+              Check out the npm package{' '}
+              <a href="https://www.npmjs.com/package/@ramp-network/ramp-instant-sdk">
+                here
+              </a>
+              .
             </span>
             <span>
               Join us on Discord <a href="https://discord.gg/zqvFPTB">here</a>.
