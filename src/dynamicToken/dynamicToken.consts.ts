@@ -1,7 +1,7 @@
 import { EthMappingObject, EnvMappingObject } from "./dynamicToken.types";
 
 /*
-  How should be mapped
+  How it should be mapped
   local,dev -> DUMMY,
   staging, prod -> DAI,
   staging-ropsten -> PLR,
