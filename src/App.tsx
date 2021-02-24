@@ -9,9 +9,9 @@ import {
   getHostTokenForRefundedFees,
 } from './helpers';
 import { ReactComponent as RampLogo } from './ramp-instant-logo.svg';
-import { getTokenBaseOnTestNet } from './dynamicToken/dynamicToken';
+import { getTestNetTokenOrDefault } from './dynamicToken/dynamicToken';
 
-const tokenName = getTokenBaseOnTestNet();
+const tokenName = getTestNetTokenOrDefault();
 const currentNetwork = process.env.REACT_APP_NETWORK_NAME;
 
 const App: React.FC = () => {
@@ -219,7 +219,7 @@ const App: React.FC = () => {
                 <label
                   className={styles.label}
                   style={{ display: 'block' }}
-                  htmlFor="ethRadio"
+                  htmlFor="btcRadio"
                 >
                   <input
                     type="radio"
