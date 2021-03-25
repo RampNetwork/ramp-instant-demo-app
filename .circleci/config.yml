@@ -20,7 +20,6 @@ jobs:
             export REACT_APP_NETWORK_NAME=Rinkeby
             export REACT_APP_TOKEN_NAME=DUMMY
             export REACT_APP_URL=https://ri-widget-dev.firebaseapp.com/
-            export REACT_APP_DOCS_URL=https://ri-docs-dev.firebaseapp.com
             export REACT_APP_REFUNDED_FEES_API_TOKEN=cwftrxqch5239yzjcr7hbspmhh8obuz3jgdqxwog
             npm run build
             npx firebase-tools --token "$FIREBASE_TOKEN" deploy --only "hosting:ri-demo-dev"
@@ -29,7 +28,6 @@ jobs:
             export REACT_APP_NETWORK_NAME=Rinkeby
             export REACT_APP_TOKEN_NAME=TEST
             export REACT_APP_URL=https://ri-widget-staging.firebaseapp.com/
-            export REACT_APP_DOCS_URL=https://ri-docs-staging.firebaseapp.com
             export REACT_APP_REFUNDED_FEES_API_TOKEN=j4z5gn7eh7uvbdgpd7c7wgkq4msuqrgs4xq4jutv
             npm run build
             npx firebase-tools --token "$FIREBASE_TOKEN" deploy --only "hosting:ri-demo-staging"
@@ -38,7 +36,6 @@ jobs:
             export REACT_APP_NETWORK_NAME=Ropsten
             export REACT_APP_TOKEN_NAME=DUMMY
             export REACT_APP_URL=https://ri-widget-staging-ropsten.firebaseapp.com/
-            export REACT_APP_DOCS_URL=https://ri-docs-staging-ropsten.firebaseapp.com
             npm run build
             npx firebase-tools --token "$FIREBASE_TOKEN" deploy --only "hosting:ri-demo-staging-ropsten"
 
@@ -46,7 +43,6 @@ jobs:
             export REACT_APP_NETWORK_NAME=Kovan
             export REACT_APP_TOKEN_NAME=DUMMY
             export REACT_APP_URL=https://ri-widget-staging-kovan.firebaseapp.com/
-            export REACT_APP_DOCS_URL=https://ri-docs-staging-kovan.firebaseapp.com
             npm run build
             npx firebase-tools --token "$FIREBASE_TOKEN" deploy --only "hosting:ri-demo-staging-kovan"
 
@@ -54,7 +50,6 @@ jobs:
             export REACT_APP_NETWORK_NAME=Goerli
             export REACT_APP_TOKEN_NAME=DUMMY
             export REACT_APP_URL=https://ri-widget-staging-goerli.firebaseapp.com/
-            export REACT_APP_DOCS_URL=https://ri-docs-staging-goerli.firebaseapp.com/
             npm run build
             npx firebase-tools --token "$FIREBASE_TOKEN" deploy --only "hosting:ri-demo-staging-goerli"
 
@@ -62,7 +57,6 @@ jobs:
             export REACT_APP_NETWORK_NAME=mainnet
             export REACT_APP_TOKEN_NAME=DAI
             export REACT_APP_URL=https://widget-instant.ramp.network/
-            export REACT_APP_DOCS_URL=https://docs-instant.ramp.network
             npm run build
             npx firebase-tools --token "$FIREBASE_TOKEN" deploy --only "hosting:ri-demo-prod"
 

@@ -108,7 +108,7 @@ const App: React.FC = () => {
           </p>
 
           <a
-            href={process.env.REACT_APP_DOCS_URL}
+            href="https://docs.ramp.network/"
             style={{ textDecoration: 'none' }}
             target="_blank"
             rel="noopener noreferrer nofollow"
