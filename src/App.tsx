@@ -106,7 +106,6 @@ const App: React.FC = () => {
             {currentNetwork === 'mainnet' ? '' : currentNetwork + ' '} Ether with GBP to experience the flow and feel
             the breeze of Open Banking.
           </p>
-          <p className={styles.description}>This works best on desktop, but feel free to give it a go on mobile.</p>
 
           <a
             href={process.env.REACT_APP_DOCS_URL}
